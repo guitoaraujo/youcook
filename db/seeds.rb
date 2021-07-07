@@ -13,7 +13,8 @@ File.open("recipes.json", "r").each_line do |line|
     cook_time: data["cook_time"],
     tags: data["tags"],
     total_time: data["total_time"],
-    image: data["image"],
+    image: data["image"].present? ? data["image"] : 'https://x.yummlystatic.com/web/Recipe-default-03.jpg',
     nb_comments: data["nb_comments"]
   )
+  return if Recipe.count > 100
 end

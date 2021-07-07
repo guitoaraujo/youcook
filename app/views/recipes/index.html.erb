@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col">
+    <div class="mb-3 mt-5">
+      <%= form_tag(recipes_path, method: :get) do %>
+        <%= label_tag :terms, 'What do I have in my fridge?', class: 'form-label' %>
+        <%= text_field_tag :terms, {}, class: 'form-control', placeholder: 'Nutella banane coco', autofocus: true %>
+        <%= submit_tag 'Bring me dishes', class: 'btn btn-primary mt-3' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% @recipes.each do |recipe| %>
+  <div class="row">
+    <div class="col-6">
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="<%= recipe.image %>" class="img-fluid rounded-start" alt="">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to recipe.name, recipe_path(id: recipe.id) %></h5>
+              <p class="card-text"><%= recipe_words(recipe.tags) %></p>
+              <p class="card-text"><small class="text-muted">Ready to eat in: <%= recipe.total_time %></small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+<% end %>
