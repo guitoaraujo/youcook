@@ -1,16 +1,7 @@
 class RecipesController < ApplicationController
 
   def index
-    terms = recipes_params[:terms]
-    if terms.present?
-      array = []
-      terms.split.each do |term|      
-        array << Recipe.where("array_to_string(ingredients, '||') LIKE :term", term: "%#{term}%")
-      end
-      @recipes = array.flatten.uniq
-    else
-      @recipes = Recipe.all
-    end
+    @recipes = Recipes::Search.new(recipes_params[:terms]).call
   end  
 
   def show
