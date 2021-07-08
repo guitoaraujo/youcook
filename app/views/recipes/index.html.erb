@@ -1,13 +1,29 @@
 <div class="row">
   <div class="col-4">
-    <div class="mb-3 mt-5">
-      <%= form_tag(recipes_path, method: :get) do %>
-        <%= label_tag :filter, 'Filter Field', class: 'form-label' %>
-        <%= select_tag :filter, options_for_select(search_filters, selected: @filter), class: 'form-select form-select-sm mb-3', autofocus: true %>
-        <%= label_tag :terms, 'Search Field', class: 'form-label' %>
-        <%= text_field_tag :terms, {}, class: 'form-control mb-3', placeholder: 'Type something here...' %>
-        <%= submit_tag 'Bring me dishes', class: 'btn btn-primary mb-3' %>
-      <% end %>
+    <div class="row">
+      <div class="col">
+        <div class="mb-3 mt-5">
+          <%= form_tag(recipes_path, method: :get) do %>
+            <%= label_tag :filter, 'Filter Field', class: 'form-label' %>
+            <%= select_tag :filter, options_for_select(search_filters, selected: @filter), class: 'form-select form-select-sm mb-3', autofocus: true %>
+            <%= label_tag :terms, 'Search Field', class: 'form-label' %>
+            <%= text_field_tag :terms, {}, class: 'form-control mb-3', placeholder: 'Type something here...' %>
+            <%= submit_tag 'Bring me dishes', class: 'btn btn-primary mb-3' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="mb-3 mt-5">
+          <h5>Most Common Tags</h5>
+          <ul class="list-group list-group-flush">
+            <% @most_common_tags.each do |k, v| %>
+              <li class="list-group-item"><span class="badge bg-danger"><%= "#{k} - #{v}" %></span></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
   <div class="col-8 mt-5">
