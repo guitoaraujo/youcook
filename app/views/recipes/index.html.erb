@@ -9,13 +9,15 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-6 offset-3">
-    <div class="mb-3">
-      <%= paginate @recipes %>
+<% unless @recipes.class == Array %>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="mb-3">
+        <%= paginate @recipes %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 <% @recipes.each do |recipe| %>
   <div class="row">
     <div class="col-6 offset-3">

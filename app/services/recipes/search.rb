@@ -11,10 +11,10 @@ module Recipes
       return Recipe.order(:name).page(@page) unless @terms.present?
 
       array = []
-      terms.split.each do |term|
-        array << Recipe.where("array_to_string(ingredients, '||') LIKE :term", term: "%#{term}%")
+      @terms.split.each do |term|
+        array << Recipe.where("array_to_string(ingredients, '||') ILIKE :term", term: "%#{term}%").order(:name)
       end
-      array.flatten.uniq.order(:name).page(@page)
+      array.flatten.any? ? array.flatten.uniq : array.flatten
     end
   end
 end
