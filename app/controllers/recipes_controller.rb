@@ -2,7 +2,8 @@
 
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipes::Search.new(recipes_params[:terms], recipes_params[:page]).call
+    @recipes = Recipes::Search.new(recipes_params).call
+    @filter = recipes_params[:filter]
   end
 
   def show
@@ -12,6 +13,6 @@ class RecipesController < ApplicationController
   private
 
   def recipes_params
-    params.permit(:terms, :page)
+    params.permit(:terms, :filter, :page)
   end
 end
