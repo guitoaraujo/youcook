@@ -10,11 +10,11 @@
       <% end %>
     </div>
   </div>
-  <div class="col-8">
+  <div class="col-8 mt-5">
     <% unless @recipes.class == Array %>
       <div class="row">
         <div class="col d-flex justify-content-center">
-          <div class="mb-3 mt-5">
+          <div class="mb-3">
             <%= paginate @recipes %>
           </div>
         </div>
