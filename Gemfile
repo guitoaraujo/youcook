@@ -16,7 +16,7 @@ gem 'webpacker', '~> 5.0'
 
 gem 'kaminari'
 gem 'rubocop-rails', require: false
-
+gem 'rack-cors'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -24,7 +24,6 @@ group :development, :test do
   gem 'pry'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 5.0.0'
-  gem 'rack-cors'
 end
 
 group :development do
